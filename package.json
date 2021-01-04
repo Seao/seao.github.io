@@ -17,10 +17,9 @@
     "start": "run-p watch server",
     "clean": "rimraf build/{css/*,js/*}",
     "server": "browser-sync start -c bs-config.js",
-    "scss": "node-sass src/scss/style.scss build/css/style.css --output-style compressed --indent-width 2 --source-map build/css/",
-    "autoprefixer": "postcss --use autoprefixer -r build/css/style.css",
+    "scss": "postcss src/scss/style.scss -o build/css/style.css --config",
     "build": "npm run clean & run-p build:*",
-    "build:css": "run-s scss autoprefixer",
+    "build:css": "npm run scss",
     "build:js": "uglifyjs src/js/* -o build/js/scripts.js",
     "build:templates": "cp -R src/templates/* build",
     "watch": "run-p watch:*",
@@ -37,12 +36,14 @@
     "autoprefixer": "^10.1.0",
     "browser-sync": "^2.26.13",
     "husky": "^4.3.6",
-    "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "postcss": "^8.2.1",
     "postcss-cli": "^8.3.1",
     "rimraf": "^3.0.2",
     "uglify-js": "^3.12.3"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.0.2"
   }
 }
