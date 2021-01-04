@@ -17,15 +17,14 @@
     "start": "run-p watch server",
     "clean": "rimraf build/{css/*,js/*}",
     "server": "browser-sync start -c bs-config.js",
-    "scss": "postcss src/scss/style.scss -o build/css/style.css --config",
     "build": "npm run clean & run-p build:*",
-    "build:css": "npm run scss",
     "build:js": "uglifyjs src/js/* -o build/js/scripts.js",
+    "build:css": "postcss src/scss/style.scss -o build/css/style.css --config",
     "build:templates": "cp -R src/templates/* build",
     "watch": "run-p watch:*",
     "watch:js": "onchange 'src/js/' -- npm run build:js",
     "watch:css": "onchange 'src/scss/' -- npm run build:css",
-    "watch:templates": "onchange 'src/templates/' -- npm run build:templates"
+    "watch:templates": "onchange 'src/templates/' -- run-p build:templates build:css"
   },
   "husky": {
     "hooks": {

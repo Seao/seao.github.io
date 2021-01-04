@@ -5,12 +5,7 @@ module.exports = {
       './src/**/*.html',
     ],
   },
-  darkMode: false,
-  theme: {
-    extend: {},
-  },
   variants: {
-    extend: {},
+    fill: ['hover', 'focus'],
   },
-  plugins: [],
 }
