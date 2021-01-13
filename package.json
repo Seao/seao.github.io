@@ -20,7 +20,7 @@
     "build": "npm run clean & run-p build:*",
     "build:js": "uglifyjs src/js/* -o build/js/scripts.js",
     "build:css": "postcss src/scss/style.scss -o build/css/style.css --config",
-    "build:assets": "cp -R src/assets build/assets",
+    "build:assets": "mkdir -p build/assets && cp -R src/assets/* build/assets",
     "build:templates": "cp -R src/templates/* build",
     "watch": "run-p watch:*",
     "watch:js": "onchange 'src/js/' -- npm run build:js",
